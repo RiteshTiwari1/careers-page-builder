@@ -75,7 +75,7 @@ export async function PUT(
       .single();
 
     const companyData = userData?.companies as unknown as { slug: string } | null;
-    if (!companyData || companyData.slug !== slug) {
+    if (!userData || !companyData || companyData.slug !== slug) {
       return NextResponse.json(
         { error: 'Forbidden - You can only edit your own company' },
         { status: 403 }
